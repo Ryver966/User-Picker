@@ -1,0 +1,18 @@
+/*User style*/
+.image-style{
+    height: 50px;
+    width: 50px;
+    border: 2px solid #FFA500;
+    border-radius: 50%;
+    margin: 10px auto;
+    text-align: center;
+}
+/*Popup style*/
+.popup-container{
+    background-color: #7F7F7F;
+    border: 2px solid #FFA500;
+    border-radius: 10%;
+    height: 200px;
+    width: 300px;
+    margin: auto;
+}
