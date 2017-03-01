@@ -6,19 +6,26 @@ import UserPopup from './UserPopup';
 export default class UserPicker extends Component {
     constructor(props) {
         super(props);
+        this.popupOpen = this.popupOpen.bind(this);
 
         this.state = {
-            activeUser: this.props.users[0]
+            isOpened: false
         };
     };
 
+    popupOpen() {
+        console.log('test')
+        this.setState({
+            isOpened: !this.state.isOpened
+        });
+    }
+
     render() {
-        console.log(this.props.users);
         return(
             <div className='main-container'>
                 <div className='active-user'>
-                    <User user={ this.props.users[0] }/>
-                    <UserPopup />
+                    <User user={ this.props.users[0] } onPress={ this.popupOpen } />
+                    <UserPopup isOpened={ this.state.isOpened } />
                 </div>
             </div>
         )

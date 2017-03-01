@@ -4,8 +4,8 @@ import '../../styles/UserPicker.css';
 export default class UserPopup extends Component {
     render() {
         return(
-            <div className='popup-container'>
-                
+            <div className={ `popup-container ${ this.props.isOpened ? 'show' : 'hide' }` }>
+
             </div>
         )
     }
