@@ -39,12 +39,13 @@
     background-color: #7F7F7F;
     border: 3px solid #FFA500;
     border-radius: 8px;
-    height: 200px;
+    height: 270px;
     width: 300px;
     margin: auto;
     display: none;
     position: relative;
     box-shadow: #222 2px 0 10px;
+    text-align: center;
 }
 .popup-container::before{
     position: absolute;
@@ -63,4 +64,17 @@
 }
 .hide{
     animation: hide 0.5s;
+}
+.users-container{
+    list-style: none;
+}
+.user-list{
+    list-style: none;
+    float: left;
+    padding-right: 25px;
+    margin-left: -15px;
+}
+.popup-txt{
+    font-size: 18px;
+    color: #FFF;
 }

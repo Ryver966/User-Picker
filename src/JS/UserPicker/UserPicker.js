@@ -25,7 +25,7 @@ export default class UserPicker extends Component {
             <div className='main-container'>
                 <div className='active-user'>
                     <User user={ this.props.users[0] } onPress={ this.popupOpen } />
-                    <UserPopup isOpened={ this.state.isOpened } />
+                    <UserPopup users={ this.props.users } isOpened={ this.state.isOpened } />
                 </div>
             </div>
         )
