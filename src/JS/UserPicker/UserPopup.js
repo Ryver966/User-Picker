@@ -6,13 +6,13 @@ export default class UserPopup extends Component {
     render() {
         const users = this.props.users.map(user => 
             <li className='user-list' key={ user.id }>
-                <User user={ user } />
+                <User user={ user } onPress={ this.props.onPress } isMainScreenUser={ false }/>
             </li>
         )
         return(
             <div className={ `popup-container ${ this.props.isOpened ? 'show' : 'hide' }` }>
                 <p className='popup-txt'>Select User</p>
-                <ul className='avatars-conatiner'>
+                <ul className='users-conatiner'>
                     { users }
                 </ul>
             </div>
