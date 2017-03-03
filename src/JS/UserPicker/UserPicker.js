@@ -28,7 +28,7 @@ export default class UserPicker extends Component {
                 activeUser: user,
                 isOpened: false
             })
-        }, 500);
+        }, 200);
     };
 
     render() {
@@ -36,7 +36,7 @@ export default class UserPicker extends Component {
             <div className='main-container'>
                 <div className='active-user'>
                     <h2 className='main-screen-txt'>{ this.state.activeUser.name }</h2>
-                    <User user={ this.state.activeUser } onPress={ this.popupOpen } isMainScreenUser={ true }/>
+                    <User user={ this.state.activeUser } onPress={ this.popupOpen } />
                     <UserPopup users={ this.props.users } isOpened={ this.state.isOpened } onPress={ this.isSelected } />
                 </div>
             </div>

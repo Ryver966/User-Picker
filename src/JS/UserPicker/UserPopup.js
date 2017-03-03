@@ -6,7 +6,7 @@ export default class UserPopup extends Component {
     render() {
         const users = this.props.users.map(user => 
             <li className='user-list' key={ user.id }>
-                <User user={ user } onPress={ this.props.onPress } isMainScreenUser={ false }/>
+                <User user={ user } onPress={ this.props.onPress } />
             </li>
         )
         return(

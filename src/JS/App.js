@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from '../styles/logo.svg';
 import '../styles/App.css';
 import UserPicker from './UserPicker/UserPicker';
+import TodosMain from './Todos/TodosMain';
 
 const users = [
   { src: require('../styles/img/avatar1.png'), name: 'Chesley', id: 1 },
@@ -21,6 +22,7 @@ class App extends Component {
           <h2>Todos App</h2>
         </div>
           <UserPicker users={ users }/>
+          <TodosMain />
       </div>
     );
   }
