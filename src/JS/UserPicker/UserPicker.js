@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/UserPicker.css';
 import User from './User';
 import UserPopup from './UserPopup';
+import TodosMain from '../Todos/TodosMain';
 
 export default class UserPicker extends Component {
     constructor(props) {
@@ -16,7 +17,6 @@ export default class UserPicker extends Component {
     };
 
     popupOpen() {
-        console.log('test')
         this.setState({
             isOpened: !this.state.isOpened
         });
@@ -39,6 +39,7 @@ export default class UserPicker extends Component {
                     <User user={ this.state.activeUser } onPress={ this.popupOpen } />
                     <UserPopup users={ this.props.users } isOpened={ this.state.isOpened } onPress={ this.isSelected } />
                 </div>
+                    <TodosMain user={ this.state.activeUser }/>
             </div>
         )
     }
