@@ -3,7 +3,15 @@ import '../../styles/Todos.css';
 
 export default class TasksList extends Component {
     render() {
-        console.log(this.props.user.name);
+        const todos = JSON.parse(localStorage.getItem(this.props.user.name)).map(todo => 
+            <tr>
+                <td>{ todo.task }</td>
+                <td>
+                    <input type='button' value='delete' />
+                    <input type='button' value='Edit' />
+                </td>
+            </tr>
+        )
         return(
             <table className='tasks-table'>
                 <thead className='table-header'>
@@ -13,12 +21,7 @@ export default class TasksList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Test</td>
-                        <td>
-                            <input type='button' value='Test' />
-                        </td>
-                    </tr>
+                    { todos }
                 </tbody>
             </table>
         )
