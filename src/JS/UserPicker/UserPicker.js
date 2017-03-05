@@ -9,12 +9,31 @@ export default class UserPicker extends Component {
         super(props);
         this.popupOpen = this.popupOpen.bind(this);
         this.isSelected = this.isSelected.bind(this);
+        this.newTask = this.newTask.bind(this);
 
         this.state = {
             isOpened: false,
-            activeUser: this.props.users[0]
+            activeUser: this.props.users[0],
+            todos: JSON.parse(localStorage.getItem(this.props.users[0].name))
         };
     };
+
+    newTask(taskFieldObject) {
+        const userName = this.state.activeUser.name;
+        const userArr = JSON.parse(localStorage.getItem(userName));
+        if(taskFieldObject.value.length === 0) {
+            alert('Enter your task');
+            return false;
+        } else {
+            userArr.push({ task: taskFieldObject.value });
+            localStorage.setItem(userName, JSON.stringify(userArr));
+            this.setState({
+                todos: userArr
+            })
+            taskFieldObject.value = '';
+            return true;
+        }
+    }
 
     popupOpen() {
         this.setState({
@@ -26,12 +45,15 @@ export default class UserPicker extends Component {
         setTimeout(() => {
             this.setState({
                 activeUser: user,
-                isOpened: false
+                isOpened: false,
+                todos: JSON.parse(localStorage.getItem(user.name))
             })
         }, 200);
+        console.log(this.state.todos)
     };
 
     render() {
+        console.log(JSON.parse(localStorage.getItem(this.state.activeUser.name)));
         return(
             <div className='main-container'>
                 <div className='active-user'>
@@ -39,7 +61,7 @@ export default class UserPicker extends Component {
                     <User user={ this.state.activeUser } onPress={ this.popupOpen } />
                     <UserPopup users={ this.props.users } isOpened={ this.state.isOpened } onPress={ this.isSelected } />
                 </div>
-                    <TodosMain user={ this.state.activeUser }/>
+                    <TodosMain user={ this.state.activeUser } todos={ this.state.todos } newTask={ this.newTask }/>
             </div>
         )
     }

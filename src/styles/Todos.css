@@ -43,3 +43,6 @@
     background-color: #4F4F4F;
     color: #FFF;
 }
+.task-name-column{
+    cursor: pointer;
+}

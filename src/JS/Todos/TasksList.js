@@ -3,9 +3,9 @@ import '../../styles/Todos.css';
 
 export default class TasksList extends Component {
     render() {
-        const todos = JSON.parse(localStorage.getItem(this.props.user.name)).map(todo => 
+        const tasks = this.props.todos.map(taskObj => 
             <tr>
-                <td>{ todo.task }</td>
+                <td className='task-name-column'>{ taskObj.task }</td>
                 <td>
                     <input type='button' value='Delete' />
                     <input type='button' value='Edit' />
@@ -21,7 +21,7 @@ export default class TasksList extends Component {
                     </tr>
                 </thead>
                 <tbody className='table-body'>
-                    { todos }
+                    { tasks }
                 </tbody>
             </table>
         )
