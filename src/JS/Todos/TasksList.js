@@ -7,7 +7,7 @@ export default class TasksList extends Component {
             <tr>
                 <td>{ todo.task }</td>
                 <td>
-                    <input type='button' value='delete' />
+                    <input type='button' value='Delete' />
                     <input type='button' value='Edit' />
                 </td>
             </tr>
@@ -16,11 +16,11 @@ export default class TasksList extends Component {
             <table className='tasks-table'>
                 <thead className='table-header'>
                     <tr>
-                        <th>Tasks</th>
-                        <th>Actions</th>
+                        <th className='left-column-header'>Tasks</th>
+                        <th className='right-column-header'>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='table-body'>
                     { todos }
                 </tbody>
             </table>
