@@ -15,7 +15,6 @@ export default class TodosMain extends Component {
             return false;
         } else {
             userArr.push({ task: taskFieldObject.value });
-            console.log(userArr);
             localStorage.setItem(userName, JSON.stringify(userArr));
             taskFieldObject.value = '';
             return true;
@@ -26,6 +25,7 @@ export default class TodosMain extends Component {
         return(
             <div className='main-todos-container'>
                 <TodosHeader onPress={ this.newTask }/>
+                <TasksList user={ this.props.user }/>
             </div>
         )
     }
