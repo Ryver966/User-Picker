@@ -7,7 +7,7 @@ export default class TodosMain extends Component {
         return(
             <div className='main-todos-container'>
                 <TodosHeader onPress={ this.props.newTask }/>
-                <TasksList user={ this.props.user } deleteTask={ this.props.deleteTask } todos={ this.props.todos }/>
+                <TasksList user={ this.props.user } setTaskDone={ this.props.setTaskDone } deleteTask={ this.props.deleteTask } todos={ this.props.todos }/>
             </div>
         )
     }

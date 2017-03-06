@@ -5,10 +5,9 @@ export default class TasksList extends Component {
     render() {
         const tasks = this.props.todos.map(taskObj => 
             <tr>
-                <td className='task-name-column'>{ taskObj.task }</td>
+                <td className={ `task-name-column ${ taskObj.done ? 'done' : '' }` } onClick={ this.props.setTaskDone }>{ taskObj.task }</td>
                 <td>
                     <input type='button' value='Delete' onClick={ this.props.deleteTask }/>
-                    <input type='button' value='Edit' />
                 </td>
             </tr>
         )

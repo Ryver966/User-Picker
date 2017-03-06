@@ -11,6 +11,7 @@ export default class UserPicker extends Component {
         this.isSelected = this.isSelected.bind(this);
         this.newTask = this.newTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
+        this.setTaskDone = this.setTaskDone.bind(this);
 
         this.state = {
             isOpened: false,
@@ -19,12 +20,31 @@ export default class UserPicker extends Component {
         };
     };
 
+    setTaskDone(e) {
+        const target = e.target;
+        const userName = this.state.activeUser.name;
+        const taskArr = JSON.parse(localStorage.getItem(userName));
+        const taskIndex = taskArr.findIndex(x => x.task === target.innerHTML);
+        if(taskArr[taskIndex].done === false) {
+            taskArr[taskIndex].done = true;
+        } else {
+            taskArr[taskIndex].done = false;
+        }
+        
+        localStorage.setItem(userName, JSON.stringify(taskArr));
+        this.setState({
+            todos: taskArr
+        });
+
+    }
+
     removeTask(e) {
         const target = e.target;
-        const taskArr = JSON.parse(localStorage.getItem(this.state.activeUser.name));
+        const userName = this.state.activeUser.name;
+        const taskArr = JSON.parse(localStorage.getItem(userName));
         const taskIndex = taskArr.findIndex(x => x.task === target.parentNode.parentNode.firstChild.innerHTML);
         taskArr.splice(taskIndex, 1);
-        localStorage.setItem(this.state.activeUser.name, JSON.stringify(taskArr));
+        localStorage.setItem(userName, JSON.stringify(taskArr));
         this.setState({
             todos: taskArr
         });
@@ -38,7 +58,7 @@ export default class UserPicker extends Component {
             alert('Enter your task');
             return false;
         } else {
-            userArr.push({ task: taskFieldObject.value });
+            userArr.push({ task: taskFieldObject.value, done: false });
             localStorage.setItem(userName, JSON.stringify(userArr));
             this.setState({
                 todos: userArr
@@ -74,7 +94,7 @@ export default class UserPicker extends Component {
                     <User user={ this.state.activeUser } onPress={ this.popupOpen } />
                     <UserPopup users={ this.props.users } isOpened={ this.state.isOpened } onPress={ this.isSelected } />
                 </div>
-                    <TodosMain user={ this.state.activeUser } deleteTask={ this.removeTask } todos={ this.state.todos } newTask={ this.newTask }/>
+                    <TodosMain user={ this.state.activeUser } setTaskDone={ this.setTaskDone } deleteTask={ this.removeTask } todos={ this.state.todos } newTask={ this.newTask }/>
             </div>
         )
     }
