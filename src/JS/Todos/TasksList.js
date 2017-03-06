@@ -7,7 +7,7 @@ export default class TasksList extends Component {
             <tr>
                 <td className='task-name-column'>{ taskObj.task }</td>
                 <td>
-                    <input type='button' value='Delete' />
+                    <input type='button' value='Delete' onClick={ this.props.deleteTask }/>
                     <input type='button' value='Edit' />
                 </td>
             </tr>
