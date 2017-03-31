@@ -12,6 +12,7 @@ export default class UserPicker extends Component {
         this.newTask = this.newTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
         this.setTaskDone = this.setTaskDone.bind(this);
+        this.setLocalStorage = this.setLocalStorage.bind(this);
 
         this.state = {
             isOpened: false,
@@ -19,6 +20,13 @@ export default class UserPicker extends Component {
             todos: JSON.parse(localStorage.getItem(this.props.users[0].name))
         };
     };
+
+    setLocalStorage() {
+        if(this.state.todos === null) {
+            document.getElementsByClassName('table-body')[0].innerHTML = '';
+            localStorage.setItem(this.state.activeUser.name, '[]');
+        }
+    }
 
     setTaskDone(e) {
         const target = e.target;
@@ -82,11 +90,10 @@ export default class UserPicker extends Component {
                 todos: JSON.parse(localStorage.getItem(user.name))
             })
         }, 200);
-        console.log(this.state.todos)
     };
 
     render() {
-        console.log(JSON.parse(localStorage.getItem(this.state.activeUser.name)));
+        this.setLocalStorage();
         return(
             <div className='main-container'>
                 <div className='active-user'>
